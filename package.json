@@ -1,0 +1,22 @@
+{
+  "name": "cebolascraper",
+  "version": "0.1.0",
+  "description": "A Scraper for links on the Onion Network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Tor",
+    "Onion",
+    "Scraping"
+  ],
+  "author": "aJesus37",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "psl": "^1.8.0",
+    "puppeteer": "^3.0.0"
+  }
+}
