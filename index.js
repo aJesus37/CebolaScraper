@@ -121,12 +121,15 @@ const controller = async () => {
             console.log("All links have been tested less than " + DAYS_AFTER_TO_TRY + " days ago. Nothing to do.")
         }
 
+
     } else if (urls.length == 0) {
         console.debug("Urls are empty, calling controller in 1s")
         setTimeout(controller, 1000);
 
     } else {
         console.debug("URLs not empty, calling request")
+        setTimeout(makeRequest, 100);
+    }
         console.debug("Check if new list has links contained in teste list. Actual: " + obj.host)
     }
 }
