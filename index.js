@@ -115,6 +115,7 @@ const controller = async () => {
         }
 
         console.dir(the_objects)
+        fs.writeFileSync('./results.txt', JSON.stringify(the_objects, null, 2))
         process.exit(0)
         } else {
             console.log("All links have been tested less than " + DAYS_AFTER_TO_TRY + " days ago. Nothing to do.")
