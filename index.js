@@ -130,8 +130,29 @@ const controller = async () => {
         console.debug("URLs not empty, calling request")
         setTimeout(makeRequest, 100);
     }
-        console.debug("Check if new list has links contained in teste list. Actual: " + obj.host)
-    }
 }
 
-make_request()
+const checkList = () => {
+    let List = []
+    try {
+        List = JSON.parse(fs.readFileSync('./results.txt'))
+    } catch {
+        console.log("There is no result to filter")
+    }
+    for (obj of List) {
+        console.debug("Check if new list has links contained in teste list. Actual: " + obj.host)
+        console.log(urls.includes(obj.host))
+        if (urls.includes(obj.host)) {
+            console.debug("List has link. Checking if last test if older than " + DAYS_AFTER_TO_TRY + "days old.")
+            let test_days_old = (new Date() - new Date(obj.lastUpdate)) / MS_A_DAY
+            console.log(`Last test is ${test_days_old} days old`)
+            if (test_days_old < DAYS_AFTER_TO_TRY) {
+                urls.splice(urls.indexOf(obj.host), 1)
+                console.debug("Link was tested less than " + DAYS_AFTER_TO_TRY + " ago, removing from list")
+            }
+        }
+    }
+    offline_urls = urls.slice()
+}
+
+checkList()
