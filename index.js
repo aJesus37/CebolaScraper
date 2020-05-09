@@ -156,3 +156,4 @@ const checkList = () => {
 }
 
 checkList()
+makeRequest()
