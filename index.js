@@ -16,6 +16,11 @@ let urls = []
 let urls_to_parse = ['http://xmh57jrzrnw6insl.onion/', '233lidifqbunokht.onion', 'http://hss3uro2hsxfogfq.onion/', '3poyacgmogsw7kyf.onion', 'http://msydqstlz2kzerdg.onion/', 'http://gjobqjj7wyczbqie.onion/']
 //let urls_to_parse = fs.readFileSync('./onion_list.txt').toString().split('\n');
 
+for (url of urls_to_parse) {
+    let parsed_url = psl.get(url.replace(/^.*:\/\//, "")
+        .replace(/\.onion.*$/, '\.onion'))
+    if (parsed_url !== null) {
+        //console.log(`The url ${parsed_url} is ok`)
         urls.push(parsed_url)
     }
 }
