@@ -4,6 +4,8 @@ const psl = require('psl')
 const cheerio = require('cheerio')
 const fs = require('fs');
 const got = require('got')
+const Address = require('./lib/Address')
+
 //Variável vai ser passada via argumento com valor default
 const threads = 4;
 let promises = 0
