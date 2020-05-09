@@ -48,7 +48,8 @@ const makeRequest = async () => {
     if (!urls.length == 0) {
         for (url of urls) {
             console.log(`Making request for URL ${url}`)
-            axios.get('http://'+url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0', timeout: axios_timeout || 15000 } })
+            //axios.get('http://'+url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0', timeout: axios_timeout || 15000 } })
+            got('http://' + url, request_options)
                 .then((response) => {
                     console.log("Got one response")
                     results.push(response);
