@@ -24,8 +24,7 @@ for (url of urls_to_parse) {
         urls.push(parsed_url)
     }
 }
-console.log(`Urls are: ${urls}`)
-let axios_timeout = null
+//console.log(`Urls are: ${urls}\n\n`)
 let results = []
 let errors = []
 //var done = (function wait() { if (!done) setTimeout(wait, 1000) })();
