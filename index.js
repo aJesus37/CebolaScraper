@@ -110,6 +110,10 @@ const controller = async () => {
             final_counter++;
         }
 
+        for (value of offline_urls) {
+            the_objects.push(new Address(statusCode = 0, host = value, lastUpdate = (new Date())))
+        }
+
         console.dir(the_objects)
         process.exit(0)
         } else {
