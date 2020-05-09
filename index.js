@@ -56,6 +56,9 @@ const makeRequest = async () => {
                     results.push(response);
                     datetimes.push(new Date())
                     promises--;
+                    if (offline_urls.indexOf(url) !== -1) {
+                        offline_urls.splice(offline_urls.indexOf(url), 1)
+                    }
                     controller()
                 })
                 .catch((error) => {
