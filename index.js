@@ -39,7 +39,7 @@ let request_options = {
 }
 //var done = (function wait() { if (!done) setTimeout(wait, 1000) })();
 
-const make_request = async () => {
+const makeRequest = async () => {
     if (urls.length == 0) {
         console.debug("No urls to test, probably waiting for promises: " + promises)
         setTimeout(controller, 1000);
