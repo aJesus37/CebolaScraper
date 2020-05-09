@@ -83,15 +83,29 @@ const controller = async () => {
         console.debug(`Error is: ${errors}`)
         console.debug("Setting up final results JSON")
 
-        for (value of results){
-            let final_objects = {}
-            let body = cheerio.load(value.data)
-            final_objects = {}
-            final_objects.status = value.status
-            final_objects.host = value.config.url
-            final_objects.title = (body("title").text().replace(/\n/g,'').replace(/\s{2,}/g,' ').replace(/(^\s)|(\s$)/g,''))
-            final_objects.lastUpdate = new Date();
-            final_objects.references = [null]
+        for (value of results) {
+            let body = cheerio.load(value.body)
+            let final_objects = new Address()
+            final_objects.statusCode = value.statusCode
+            final_objects.host = value.requestUrl
+                .replace(/^http:\/\//, "")
+                .replace(/\.onion.*$/, '\.onion')
+            final_objects.responseUrl = value.url
+            final_objects.title = (body("title")
+                .text()
+                .replace(/\n/g, '')
+                .replace(/\s{2,}/g, ' ')
+                .replace(/(^\s)|(\s$)/g, ''))
+            final_objects.lastUpdate = datetimes[final_counter]
+            final_objects.lastOnline = final_objects.lastUpdate
+            final_objects.byteSize = Buffer.byteLength(value.body, 'utf8')
+            if (value.statusCode >= 200 && value.statusCode < 300){
+                final_objects.status = 'online'
+            } else if (value.statusCode >= 400){
+                final_objects.status = 'offline'
+            } else {
+                final_objects.status = 'unknown'
+            }
             the_objects.push(final_objects)
             final_counter++;
         }
