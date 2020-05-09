@@ -81,6 +81,7 @@ const controller = async () => {
         console.debug("Got all responses, showing results or errors")
         console.dir(`results is: ${results}`, { depth: null })
         console.debug(`Error is: ${errors}`)
+        console.debug("Setting up final results JSON")
 
         for (value of results){
             let final_objects = {}
@@ -107,7 +108,7 @@ const controller = async () => {
 
     } else {
         console.debug("URLs not empty, calling request")
-        setTimeout(make_request, 100);
+        console.debug("Check if new list has links contained in teste list. Actual: " + obj.host)
     }
 }
 
