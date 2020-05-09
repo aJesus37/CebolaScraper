@@ -80,7 +80,7 @@ const makeRequest = async () => {
 const controller = async () => {
     if (urls.length == 0 && promises == 0) {
         if (anyTest){
-        let final_counter = 0
+            let final_counter = 0
         let the_objects = []
         console.debug("Got all responses, showing results or errors")
         console.dir(`results is: ${results}`, { depth: null })
