@@ -27,6 +27,13 @@ for (url of urls_to_parse) {
 //console.log(`Urls are: ${urls}\n\n`)
 let results = []
 let errors = []
+let request_options = {
+    timeout: 15000,
+    retry: 0,
+    headers: {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0' // Tor's User-Agent
+    }
+}
 //var done = (function wait() { if (!done) setTimeout(wait, 1000) })();
 
 const make_request = async () => {
