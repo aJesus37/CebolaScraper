@@ -7,7 +7,9 @@ const got = require('got')
 const Address = require('./lib/Address')
 
 //Variável vai ser passada via argumento com valor default
-const threads = 4;
+const threads = 1;
+const MS_A_DAY = 86400 * 1000;
+const DAYS_AFTER_TO_TRY = 0;
 let promises = 0
 //Conteudo vai ser adquirido via argumento ou arquivo
 let urls = []
