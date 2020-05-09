@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-const axios = require('axios').default;
+//const axios = require('axios').default;
 const psl = require('psl')
 const cheerio = require('cheerio')
 const fs = require('fs');
+const got = require('got')
 //Variável vai ser passada via argumento com valor default
 const threads = 4;
 let promises = 0
