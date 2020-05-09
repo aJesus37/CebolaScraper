@@ -51,12 +51,14 @@ const makeRequest = async () => {
             //axios.get('http://'+url, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0', timeout: axios_timeout || 15000 } })
             got('http://' + url, request_options)
                 .then((response) => {
+                    anyTest = true
                     console.log("Got one response")
                     results.push(response);
                     promises--;
                     controller()
                 })
                 .catch((error) => {
+                    anyTest = true
                     console.log("Got one error")
                     errors.push(error);
                     promises--;
@@ -73,7 +75,7 @@ const makeRequest = async () => {
 
 const controller = async () => {
     if (urls.length == 0 && promises == 0) {
-        
+        if (anyTest){
         let final_counter = 0
         let the_objects = []
         console.debug("Got all responses, showing results or errors")
@@ -95,6 +97,9 @@ const controller = async () => {
 
         console.dir(the_objects)
         process.exit(0)
+        } else {
+            console.log("All links have been tested less than " + DAYS_AFTER_TO_TRY + " days ago. Nothing to do.")
+        }
 
     } else if (urls.length == 0) {
         console.debug("Urls are empty, calling controller in 1s")
