@@ -26,7 +26,10 @@ for (url of urls_to_parse) {
 }
 //console.log(`Urls are: ${urls}\n\n`)
 let results = []
+let datetimes = []
 let errors = []
+let anyTest = false
+let offline_urls = []
 let request_options = {
     timeout: 15000,
     retry: 0,
