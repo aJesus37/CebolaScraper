@@ -54,6 +54,7 @@ const makeRequest = async () => {
                     anyTest = true
                     console.log("Got one response")
                     results.push(response);
+                    datetimes.push(new Date())
                     promises--;
                     controller()
                 })
